@@ -1,0 +1,11 @@
+/* body{
+    background-image: url('https://e1.pxfuel.com/desktop-wallpaper/1003/90/desktop-wallpaper-dark-world-map-black.jpg');
+} */
+
+.container{
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    height: 100vh;
+}

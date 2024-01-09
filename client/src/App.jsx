@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+import axios from 'axios'
 import './App.css'
+import { addCountries } from "./redux/actions.js";
+import Landing from './components/visibleComponents/landing/Landing';
+import Home from './components/visibleComponents/home/Home';
+import DetailCountry from './components/visibleComponents/detail/detailCountry';
+import FormCreateActivity from './components/visibleComponents/form/formCreateActivity';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const URL = "http://localhost:3001/countries";
+  const dispatch = useDispatch();
+  const {countries} = useSelector((state) => state);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data } = await axios.get(URL);
+        if (data) {
+          dispatch(addCountries(data));
+        }
+      } catch (error) {
+        console.error("Error al realizar la solicitud:", error.message);
+      }
+    };
+    fetchData();
+  }, []);
+
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+     <Routes>
+        <Route path='/' element= {<Landing/>}/>
+        <Route path='/home' element= {<Home countries={countries}/>}/>
+        <Route path='/detail/:id' element= {<DetailCountry/>}/>
+        <Route path='/form' element= {<FormCreateActivity countries={countries}/>}/>
+     </Routes>
     </>
   )
 }
 
 export default App
+

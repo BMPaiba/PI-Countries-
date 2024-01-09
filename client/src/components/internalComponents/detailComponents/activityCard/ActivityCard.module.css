@@ -1,0 +1,28 @@
+
+.container{
+    margin-left: 20px;
+    width: 200px;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    margin-bottom: 10px;    
+    padding: 12px;
+    backdrop-filter: blur(50px);
+    /* background-color: red; */
+}
+.container__name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    border-bottom: 1px solid #555;
+    font-size: 20px;
+}
+
+.container__cont{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+    border-bottom: 1px solid #555;
+    font-size: 14px;
+}

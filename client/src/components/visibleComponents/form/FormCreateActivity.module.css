@@ -1,0 +1,143 @@
+ body {
+    margin: 0;
+    user-select: none;
+    box-sizing: border-box;
+  }
+
+  /* .container {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    height: 100vh;
+    width: 55vw;
+    user-select: none;
+  }
+  
+  .container__form {
+    backdrop-filter: blur(15px);
+    border: 1px solid #999;
+    border-radius: 30px;
+    padding: 15px;
+    text-align: center;
+    height: 80vh;
+    width: 30vw;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container__form_hijo {
+    width: 100%;
+  }
+  
+  .container__form_errors {
+    color: wheat;
+    margin-top: -12px;
+    font-size: 14px;
+  }
+  
+  .container__form_input {
+    width: 85%;
+    font-size: 16px; 
+    color: #000; 
+    background-color: #fff; 
+    border: 1px solid #333; 
+    border-radius: 5px; 
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+  }
+  .container__form_label {
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    color: #fff;
+    font-size: 25px;
+    margin-top: 3px;
+    margin-bottom: 5px;
+  }
+  
+  .container__form_button {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  
+  .container__form_button_button {
+    color: #000;
+    font-size: 20px;
+    border-radius: 10px;
+    height: 30px;
+    width: 70px;
+    border: none;
+  }
+  
+  .container__form_button_button:not([disabled]):hover {
+    background-color: greenyellow;
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: transform 0.5s ease;
+  }
+  
+  .container__form_button_button:not(:hover){
+      transition: transform 0.5s ease;
+  }
+  
+  select:hover {
+    cursor: pointer;
+  } 
+ */
+
+ .container{
+  /* background-color: red; */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+
+ .container__form{
+  /* background-color: #29f; */
+  backdrop-filter: blur(150px);
+
+  padding: 15px;
+}
+
+/* .container__form_hijo{
+  overflow: hidden;
+ } */
+
+ .container__form_label{
+  /* background-color: #00f3; */
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 20px;
+  color: #fff;
+ }
+
+ .container__form_input{
+  margin-top:5px;
+  width: 100%;
+  box-sizing: border-box; 
+  padding: 2px;
+  font-size: 18px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #24e7fd;
+  color: #24e7fd;
+}
+
+ .container__form_errors{
+  margin-top: -10px;
+  color: #aaa;
+ }
+
+ .container__form_input_option{
+  background-color: #0a4791;
+  color: #24e7fd;
+ }
+
+
+

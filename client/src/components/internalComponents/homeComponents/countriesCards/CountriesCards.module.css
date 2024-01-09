@@ -1,0 +1,23 @@
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-wrap: wrap;
+  width: 80vw;
+  height: 80vh;
+}
+.card__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__text_name {
+  font-size: 50px;
+  width: 40%;
+  color: #fff;
+  /* backdrop-filter: blur(45px); */
+  padding: 20px;
+  border-radius: 30px;
+  /* border: 2px solid white; */
+}

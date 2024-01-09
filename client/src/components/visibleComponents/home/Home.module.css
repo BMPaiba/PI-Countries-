@@ -1,0 +1,21 @@
+
+.container_body{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+}
+.container_body_filter{
+
+}
+
+.container_body_cards{
+  width: 50%;
+  /* background-color: red; */
+}
+
+.container__paging{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

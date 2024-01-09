@@ -1,0 +1,60 @@
+
+
+
+.container {
+  text-align: center;
+  font-size: 18px;
+  color: #ccc;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background-color: #29f7;
+  padding: 10px;
+  padding-bottom: 30px;
+  height: 100%;
+  width: 15vw;
+  min-width: 200px;
+  border-radius: 30px;
+  border: 1px solid #062b5f;
+}
+
+.container__continent,
+.container__activities,
+.container__alphabeticalOrder,
+.container__populationOrder{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  height: 80px;
+}
+
+.container__continent_name{
+  justify-self: start;
+  height: 50px;
+}
+
+.container__continent select,
+.container__activities select,
+.container__alphabeticalOrder select,
+.container__populationOrder select{
+
+  text-align: center;
+  border-radius: 30px ;
+  height: 25px;
+  font-size: 16px;
+}
+
+
+.container__cleanButton{
+  margin-top: 30px;
+  font-size: 15px;
+  height: 20px;
+}
+
+.container__cleanButton button{
+  font-size: 15px;
+  height: 30px;
+  width: 60%;
+  padding: 5px;
+  border-radius: 30px ;
+}
+
+
