@@ -18,6 +18,7 @@ export default function Filters() {
   const URL_ACT = "http://localhost:3001/activities";
 
   const handlerContinent = (event) => {
+    const { value } = event.target;
     dispatch(continent(event.target.value));
     dispatch(paged(1));
   };
@@ -33,6 +34,7 @@ export default function Filters() {
     dispatch(clear());
     dispatch(paged(1));
   };
+  
   const handleActivity = (event) => {
     const { value } = event.target;
     dispatch(filterActivities(value));

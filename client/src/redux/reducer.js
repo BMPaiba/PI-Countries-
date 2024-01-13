@@ -27,6 +27,7 @@ export default function reducer(state = initialState, { type, payload }) {
         countries: payload,
         originalCountries: payload,
       };
+
     case CONTINENT:
       if (payload === "All") {
         return {
@@ -69,14 +70,14 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         countries: populState,
       };
-      
+
     case CLEARFILTERS:
       return {
         ...state,
         countries: [...state.originalCountries],
       };
 
-      case ACTIVITIES:
+    case ACTIVITIES:
       return {
         ...state,
         activities: payload,
@@ -84,21 +85,26 @@ export default function reducer(state = initialState, { type, payload }) {
 
     case FILTERACTIVITIES:
       if (payload === "All") {
+        let filterCountryId = state.activities
+          .map((elem) => elem.countries)
+          .flat();
 
-        let filterCountries = [...new Set(state.activities.map((elem) => elem.countries[0]))];
+        let filterCountryIdSet = [...new Set(filterCountryId)];
+
         const filterFinally = state.originalCountries.filter((country) =>
-        filterCountries.includes(country.id)
-      );
+          filterCountryIdSet.includes(country.id)
+        );
 
         return {
           ...state,
           countries: filterFinally,
         };
       }
+
       const filterActivities = state.activities.find(
         (act) => act.id === parseInt(payload)
-        );
-        
+      );
+
       const filterCountries = filterActivities.countries;
 
       const filterFinally = state.originalCountries.filter((country) =>
@@ -110,12 +116,12 @@ export default function reducer(state = initialState, { type, payload }) {
         countries: filterFinally,
       };
 
-      case SEARCH:
+    case SEARCH:
       return {
         ...state,
         countries: payload,
       };
-      
+
     default:
       return {
         ...state,
