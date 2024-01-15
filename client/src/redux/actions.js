@@ -52,6 +52,7 @@ import {
       payload: page,
     };
   };
+  
   export const search = (search) => {
     return {
       type: SEARCH,

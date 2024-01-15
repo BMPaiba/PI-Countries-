@@ -6,18 +6,14 @@ const ActivityModel = require('../src/models/Activity')
 const fs = require('fs');
 const path = require('path');
 const {
-   DB_COUNTRIES, DB_USER, DB_PASSWORD, DB_HOST,DB_DEPLOY
+   DB_COUNTRIES, DB_USER, DB_PASSWORD, DB_HOST
 } = process.env;
 
-const sequelize = new Sequelize(DB_DEPLOY, {
+
+const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_COUNTRIES}`, {
   logging: false, 
   native: false, 
 });
-
-// const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_COUNTRIES}`, {
-//   logging: false, 
-//   native: false, 
-// });
 
 const basename = path.basename(__filename);
 
