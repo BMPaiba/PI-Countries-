@@ -9,6 +9,7 @@ import {
     NEWACTIVITIES,
     FILTERACTIVITIES,
     CLEARFILTERS,
+    FILTERS,
   } from "./action-types";
   
   export const addCountries = (countries) => {
@@ -81,3 +82,12 @@ import {
     };
   };
   
+
+  //? combined filters
+  export const filters = (continent, activity) => ({
+    type: FILTERS,
+    payload: {
+      continent: continent,
+      activity: activity,
+    },
+  });

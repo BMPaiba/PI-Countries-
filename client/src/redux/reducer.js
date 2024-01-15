@@ -9,7 +9,9 @@ import {
   NEWACTIVITIES,
   FILTERACTIVITIES,
   CLEARFILTERS,
+  FILTERS,
 } from "./action-types";
+import { filters } from "./actions";
 
 const initialState = {
   countries: [],
@@ -19,6 +21,52 @@ const initialState = {
   pageSize: 10,
 };
 
+const applyFilters = (continent, activity, countries, activities) => {
+  // Si ambos filtros son "All", devuelve la lista completa
+  if (continent === "All" && activity === "All") {
+    console.log("estas son las actividades: ", activities);
+    return countries;
+  }
+
+  // Filtrar por continente
+  if (continent !== "All" && activity === "All") {
+    const filteredContinentsOnly = countries.filter(
+      (country) => country.continent === continent
+    );
+    if (filteredContinentsOnly.length > 0) {
+      return filteredContinentsOnly;
+    } else return console.log("No existe la data");
+  }
+
+  if (activity !== "All") {
+    const activityNumer = Number(activity);
+    let filterActivity = activities.find((act) => act.id === activityNumer);
+
+    const countriesOfActivityId = filterActivity.countries;
+
+    //filtro para todos los continentes
+    const filterActivityOnAllContinents = countries.filter((country) =>
+      countriesOfActivityId.includes(country.id)
+    );
+
+    //filtra por actividad y continente
+    const filteredContinents = filterActivityOnAllContinents.filter(
+      (country) => country.continent === continent
+    );
+    if (continent === "All") {
+      return filterActivityOnAllContinents;
+    }
+
+    if (continent !== "All") {
+      return filteredContinents;
+    }
+
+    console.log(filteredContinents);
+  }
+
+  return countries;
+};
+
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
     case ALLCOUNTRIES:
@@ -26,6 +74,19 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         countries: payload,
         originalCountries: payload,
+      };
+
+    case FILTERS:
+      const { continent, activity } = payload;
+      const filterFinallyComb = applyFilters(
+        continent,
+        activity,
+        state.originalCountries,
+        state.activities
+      );
+      return {
+        ...state,
+        countries: filterFinallyComb,
       };
 
     case CONTINENT:

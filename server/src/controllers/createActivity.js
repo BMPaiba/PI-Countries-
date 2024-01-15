@@ -2,6 +2,14 @@ const { Activity, Country } = require("../db");
 
 const createActivity = async ({name,difficulty,duration,season, CountryID,}) => {
 
+  const existingActivity = await Activity.findOne({
+    where: { name }
+  });
+
+  if (existingActivity) {
+    throw new Error("Activity with this name already exists");
+  }
+
   const selectedCountries = await Country.findAll({
     where: {
       id: CountryID,
@@ -25,3 +33,4 @@ const createActivity = async ({name,difficulty,duration,season, CountryID,}) => 
 };
 
 module.exports = createActivity;
+

@@ -72,6 +72,10 @@ export default function FormCreateActivity({ countries }) {
     dispatch(newActivities(newActivity));
     saveActivity(newActivity);
     setSelectCountries([]);
+    setCountryID([]);
+    setNewActivity({...newActivity,
+      CountryID: [],
+    });
   };
 
   const saveActivity = async (newActivity) => {
@@ -82,7 +86,19 @@ export default function FormCreateActivity({ countries }) {
       );
       alert("Saved activity");
     } catch (error) {
-      console.error("Error saving the activity:", error.message);
+      if (error.response) {
+        if (error.response.status === 400) {
+          window.alert("Error: Required data are missing"); //error al crear la actividad, faltan datos
+        } else {
+          window.alert(error.response.data.error); //error al crear la actividad, ya existe
+        }
+      } else if (error.request) {
+        // La solicitud fue hecha pero no se recibió respuesta
+        console.error("No response received from the server");
+      } else {
+        // Algo sucedió en la configuración de la solicitud que provocó el error
+        console.error("Error setting up the request:", error.message);
+      }
     }
   };
 
@@ -90,14 +106,14 @@ export default function FormCreateActivity({ countries }) {
     const fetchData = async () => {
       try {
         const countriesCopy = [...originalCountries];
-  
+
         countriesCopy.sort((a, b) => a.name.localeCompare(b.name));
-  
+
         const newOptions = countriesCopy.map((country) => ({
           value: country.id,
           label: country.name,
         }));
-  
+
         setcountriesList(newOptions);
       } catch (error) {
         console.error("Error al realizar la solicitud:", error.message);
@@ -105,7 +121,7 @@ export default function FormCreateActivity({ countries }) {
     };
     fetchData();
   }, [originalCountries]);
-  
+
   return (
     <>
       <div className={styles.container}>
@@ -134,12 +150,27 @@ export default function FormCreateActivity({ countries }) {
               onChange={handleDifficult}
               className={styles.container__form_input}
             >
-              <option className={styles.container__form_input_option} value="Seleccionar">Select difficulty </option>
-              <option className={styles.container__form_input_option}  value="1">Beginner </option>
-              <option className={styles.container__form_input_option}  value="2">Normal </option>
-              <option className={styles.container__form_input_option}  value="3">Intermediate </option>
-              <option className={styles.container__form_input_option}  value="4">Advanced </option>
-              <option className={styles.container__form_input_option}  value="5">Expert </option>
+              <option
+                className={styles.container__form_input_option}
+                value="Seleccionar"
+              >
+                Select difficulty{" "}
+              </option>
+              <option className={styles.container__form_input_option} value="1">
+                Beginner{" "}
+              </option>
+              <option className={styles.container__form_input_option} value="2">
+                Normal{" "}
+              </option>
+              <option className={styles.container__form_input_option} value="3">
+                Intermediate{" "}
+              </option>
+              <option className={styles.container__form_input_option} value="4">
+                Advanced{" "}
+              </option>
+              <option className={styles.container__form_input_option} value="5">
+                Expert{" "}
+              </option>
             </select>
             <div className={styles.container__form_errors}>
               <p>{errors.difficulty ? errors.difficulty : null}</p>
@@ -169,11 +200,36 @@ export default function FormCreateActivity({ countries }) {
               onChange={handleSeason}
               className={styles.container__form_input}
             >
-              <option className={styles.container__form_input_option}  value="Seleccionar">Select Season</option>
-              <option className={styles.container__form_input_option}  value="Summer">Summer </option>
-              <option className={styles.container__form_input_option}  value="Fall">Fall </option>
-              <option className={styles.container__form_input_option}  value="Winter">Winter </option>
-              <option className={styles.container__form_input_option}  value="Spring">Spring </option>
+              <option
+                className={styles.container__form_input_option}
+                value="Seleccionar"
+              >
+                Select Season
+              </option>
+              <option
+                className={styles.container__form_input_option}
+                value="Summer"
+              >
+                Summer{" "}
+              </option>
+              <option
+                className={styles.container__form_input_option}
+                value="Fall"
+              >
+                Fall{" "}
+              </option>
+              <option
+                className={styles.container__form_input_option}
+                value="Winter"
+              >
+                Winter{" "}
+              </option>
+              <option
+                className={styles.container__form_input_option}
+                value="Spring"
+              >
+                Spring{" "}
+              </option>
             </select>
             <div className={styles.container__form_errors}>
               <p>{errors.season ? errors.season : null}</p>
@@ -185,9 +241,18 @@ export default function FormCreateActivity({ countries }) {
               onChange={handlerSelectCountries}
               className={styles.container__form_input}
             >
-              <option  className={styles.container__form_input_option}  value="Seleccionar">Seleccionar Pais </option>
+              <option
+                className={styles.container__form_input_option}
+                value="Seleccionar"
+              >
+                Seleccionar Pais{" "}
+              </option>
               {countriesList.map((option) => (
-                <option  className={styles.container__form_input_option}  key={option.value} value={option.value}>
+                <option
+                  className={styles.container__form_input_option}
+                  key={option.value}
+                  value={option.value}
+                >
                   {option.label}
                 </option>
               ))}
@@ -214,7 +279,6 @@ export default function FormCreateActivity({ countries }) {
                 Create
               </button>
             </div>
-
           </div>
         </div>
         <div className={styles.container__form_countries}>

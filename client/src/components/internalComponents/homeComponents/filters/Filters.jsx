@@ -8,6 +8,7 @@ import {
   clear,
   filterActivities,
   allActivities,
+  filters,
 } from "../../../../redux/actions";
 import { useDispatch } from "react-redux";
 import axios from "axios";
@@ -15,13 +16,29 @@ import axios from "axios";
 export default function Filters() {
   const dispatch = useDispatch();
   const [dropdownOptions, setDropdownOptions] = useState([]);
+  const [continentFilter, setContinentFilter] = useState("All")
+  const [activityFilter, setActivityFilter] = useState("All")
   const URL_ACT = "http://localhost:3001/activities";
 
   const handlerContinent = (event) => {
     const { value } = event.target;
-    dispatch(continent(event.target.value));
-    dispatch(paged(1));
+    setContinentFilter(value);
   };
+  
+
+  const handleActivity = (event) => {
+    const { value } = event.target;
+    setActivityFilter(value)
+  };
+
+  useEffect(()=> {
+    const fetchData = () => {
+      dispatch(filters(continentFilter,activityFilter))
+      dispatch(paged(1));
+    }
+    fetchData()
+  }, [continentFilter,activityFilter])
+
   const handlerOrder = (event) => {
     dispatch(order(event.target.value));
     dispatch(paged(1));
@@ -33,13 +50,11 @@ export default function Filters() {
   const clearFilters = () => {
     dispatch(clear());
     dispatch(paged(1));
+    setActivityFilter("All")
+    setContinentFilter("All");
   };
   
-  const handleActivity = (event) => {
-    const { value } = event.target;
-    dispatch(filterActivities(value));
-    dispatch(paged(1));
-  };
+  
 
   useEffect(() => {
     const fetchData = async () => {

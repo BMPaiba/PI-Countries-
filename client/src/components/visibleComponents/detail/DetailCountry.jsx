@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import styles from "./DetailCountry.module.css";
 import ActivityCard from "../../internalComponents/detailComponents/activityCard/ActivityCard";
 import { useSelector } from "react-redux";
 const URL = "http://localhost:3001/countries/";
+// import { useHistory } from 'react-router-dom';
 
 export default function DetailCountry() {
   const { id } = useParams();
   const [detail, setDetail] = useState({});
   const [activities, setActivities] = useState([]);
+  const navigate = useNavigate()
+  // const history = useHistory();
+  const comeback = () => {
+    navigate(-1);
+  };
+
+ 
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,6 +59,9 @@ export default function DetailCountry() {
   return (
     <div>
       <div className={styles.container}>
+        <button  onClick={comeback}>
+          Back
+        </button>
         <div className={styles.container__cardMay}>
           <div className={styles.container__card}>
             <div className={styles.container__card_image}>
