@@ -62,7 +62,9 @@
   justify-content: space-between;
 }
 
-.container__form_button_button{
+.container__form_button_button_cancel ,
+.container__form_button_button_create
+{
   height: 30px;
   width: 70px;
   border-radius: 30px;
@@ -70,7 +72,13 @@
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.container__form_button_button:hover{
+.container__form_button_button_cancel:hover{
   cursor: pointer;
   background-color: #25edff;
  }
+
+ .container__form_button_button_create:hover:enabled {
+  background-color: #25edff;
+  color: black;
+  cursor: pointer;
+}

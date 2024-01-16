@@ -65,3 +65,11 @@
   background-color: red;
   cursor: pointer;
 }
+
+
+
+.container__cleanButton button:hover{
+  background-color: #25edff;
+  color: #000;
+  cursor: pointer;
+}

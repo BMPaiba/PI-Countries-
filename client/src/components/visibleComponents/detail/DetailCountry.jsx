@@ -4,12 +4,23 @@ import axios from "axios";
 import styles from "./DetailCountry.module.css";
 import ActivityCard from "../../internalComponents/detailComponents/activityCard/ActivityCard";
 import { useSelector } from "react-redux";
+import Loading from "../../internalComponents/homeComponents/loading/Loading";
 const URL = "http://localhost:3001/countries/";
 
 export default function DetailCountry() {
   const { id } = useParams();
   const [detail, setDetail] = useState({});
   const [activities, setActivities] = useState([]);
+  const [load, setLoad] = useState(true);
+
+  useEffect(() => {
+    const fetchData = () => {
+      setTimeout(() => {
+        setLoad(false);
+      }, 2000); 
+    };
+    fetchData();
+  }, []); 
 
   const navigate = useNavigate();
 
@@ -54,6 +65,7 @@ export default function DetailCountry() {
   }, []);
 
   return (
+    load ? <Loading/> :
     <div>
       <div className={styles.container}>
         <div className={styles.container__cardMay}>

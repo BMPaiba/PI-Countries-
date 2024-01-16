@@ -6,11 +6,23 @@ import axios from "axios";
 import validations from "../../../utils/validations";
 import SelectedCountry from "../../internalComponents/formComponents/selectedCoutry/SelectedCountry";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../internalComponents/homeComponents/loading/Loading";
 
 export default function FormCreateActivity({ countries }) {
   const dispatch = useDispatch();
   const { originalCountries } = useSelector((state) => state);
   const navigate = useNavigate();
+
+  const [load, setLoad] = useState(true);
+
+  useEffect(() => {
+    const fetchData = () => {
+      setTimeout(() => {
+        setLoad(false);
+      }, 2000); 
+    };
+    fetchData();
+  }, []); 
 
   const comeback = () => {
     navigate("/home");
@@ -127,7 +139,7 @@ export default function FormCreateActivity({ countries }) {
   }, [originalCountries]);
 
   return (
-    <>
+    load ? <Loading/> :
       <div className={styles.container}>
         <div className={styles.container__form}>
           <div className={styles.container__form_hijo}>
@@ -270,7 +282,7 @@ export default function FormCreateActivity({ countries }) {
             </div>
             <div className={styles.container__form_button}>
               <button
-                className={styles.container__form_button_button}
+                className={styles.container__form_button_button_create}
                 onClick={handlerSubmit}
                 disabled={
                   errors.name ||
@@ -282,7 +294,7 @@ export default function FormCreateActivity({ countries }) {
               >
                 Create
               </button>
-              <button className={styles.container__form_button_button} onClick={comeback}>Cancel</button>
+              <button className={styles.container__form_button_button_cancel} onClick={comeback}>Cancel</button>
             </div>
           </div>
         </div>
@@ -296,6 +308,6 @@ export default function FormCreateActivity({ countries }) {
           ))}
         </div>
       </div>
-    </>
+    
   );
 }

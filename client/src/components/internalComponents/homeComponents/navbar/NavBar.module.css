@@ -10,7 +10,7 @@
 .container input {
   height: 30px;
   font-size: 15px;
-  width: 30%;
+  width: 25%;
 }
 
 .container button {
@@ -21,11 +21,13 @@
 
 .container button:hover{
   background-color: #25edff;
-  color: black;
+  color: #000;
   cursor: pointer;
 }
+
 
 .container input:focus {
   outline: none;
 }
+
 
