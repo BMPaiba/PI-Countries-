@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function CountryCard(props) {
   return (
-    <div>
+    <div className={styles.div}>
       <Link to={`/detail/${props.id}`} className={styles.link}>
         <div className={styles.container}>
           <div className={styles.container__info}>

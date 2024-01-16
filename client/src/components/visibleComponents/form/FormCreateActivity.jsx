@@ -5,10 +5,16 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import validations from "../../../utils/validations";
 import SelectedCountry from "../../internalComponents/formComponents/selectedCoutry/SelectedCountry";
+import { useNavigate } from "react-router-dom";
 
 export default function FormCreateActivity({ countries }) {
   const dispatch = useDispatch();
   const { originalCountries } = useSelector((state) => state);
+  const navigate = useNavigate();
+
+  const comeback = () => {
+    navigate("/home");
+  };
 
   const [newActivity, setNewActivity] = useState({
     name: "",
@@ -73,9 +79,7 @@ export default function FormCreateActivity({ countries }) {
     saveActivity(newActivity);
     setSelectCountries([]);
     setCountryID([]);
-    setNewActivity({...newActivity,
-      CountryID: [],
-    });
+    setNewActivity({ ...newActivity, CountryID: [] });
   };
 
   const saveActivity = async (newActivity) => {
@@ -278,6 +282,7 @@ export default function FormCreateActivity({ countries }) {
               >
                 Create
               </button>
+              <button className={styles.container__form_button_button} onClick={comeback}>Cancel</button>
             </div>
           </div>
         </div>

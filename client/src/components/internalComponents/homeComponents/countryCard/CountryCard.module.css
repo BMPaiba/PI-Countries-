@@ -56,3 +56,15 @@ body {
   width: 90%;
   border-radius: 15px;
 }
+
+.container:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+    -webkit-box-shadow: 0px 0px 34px 7px #25edff;
+    -moz-box-shadow: 0px 0px 34px 7px #25edff;
+    box-shadow: 0px 0px 34px 7px #25edff;
+  }
+
+  .container:not(:hover) {
+    transition: transform 0.3s ease;
+  }

@@ -1,13 +1,12 @@
 .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     
     text-align: center;
-    height: 100vh;
+    height: 90vh;
     width: 75%;
     color: white ;
-    /* background-color: red; */
-    margin: 30px auto;
+    margin: 10px auto;
   }
 
   
@@ -67,7 +66,7 @@
      margin: auto;
      display: flex;
      align-items: center;
-     justify-content: space-between; /* Para alinear título a la izquierda y cont a la derecha */
+     justify-content: space-between; 
      border-bottom: 1px solid #555;
      font-size: 14px;
   }
@@ -76,3 +75,18 @@
      display: flex;
      flex-wrap: wrap;
   }
+
+
+
+.button button{
+  padding: 5px;
+  width: 100%;
+  border-radius: 30px;
+  font-size: 22px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.button button:hover{
+ cursor: pointer;
+ background-color: #25edff;
+}

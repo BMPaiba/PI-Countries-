@@ -34,7 +34,7 @@ export default function NavBar() {
   return (
     <div className={styles.container}>
       <input
-        type="text"
+        type="search"
         value={searched}
         placeholder="Type the name of the country"
         onChange={countrySearched}

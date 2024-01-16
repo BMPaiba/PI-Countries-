@@ -18,4 +18,14 @@
   font-size: 15px;
   padding: 0 15px;
 } 
- 
+
+.container button:hover{
+  background-color: #25edff;
+  color: black;
+  cursor: pointer;
+}
+
+.container input:focus {
+  outline: none;
+}
+

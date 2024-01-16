@@ -6,6 +6,42 @@
     color: #fff;
     display: flex;
     justify-content: center;
-    align-items: start;
+    align-items: center;
     height: 100vh;
+}
+
+
+
+.container__form{  backdrop-filter: blur(30px);
+    padding: 20px;
+    border-radius: 30px;
+
+
+}
+
+.container__form_image{
+    width: 300px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.container__form_text{
+    text-align: center;
+
+}
+.container__form_button{
+    text-align: center;
+}
+
+.container__form_button button{
+    height: 40px;
+    width: 90px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+.container__form_button button:hover{
+    background-color: #25edff;
+    cursor: pointer;
 }

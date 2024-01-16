@@ -1,6 +1,4 @@
 
-
-
 .container {
   text-align: center;
   font-size: 18px;
@@ -57,4 +55,13 @@
   border-radius: 30px ;
 }
 
+.container select:hover{
+  cursor: pointer;
+  /* background-color: #25edff; */
+  color: black;
+}
 
+ option:hover{
+  background-color: red;
+  cursor: pointer;
+}

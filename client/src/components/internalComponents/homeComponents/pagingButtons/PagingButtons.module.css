@@ -12,8 +12,8 @@
   background-color: #0b6ae0;
   color: #fff;
   /* border: 1px solid red; */
-  border: none;
-  outline: none;
+  /* border: none;
+  outline: none; */
   border-radius: 30px;
   padding: 5px 20px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -26,4 +26,11 @@
   margin: 0px 30px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
+}
+
+.container_button:hover{
+  background-color: #25edff;
+  color: black;
+  cursor: pointer;
+  
 }
