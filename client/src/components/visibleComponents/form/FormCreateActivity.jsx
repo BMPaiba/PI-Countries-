@@ -294,7 +294,7 @@ export default function FormCreateActivity({ countries }) {
               >
                 Create
               </button>
-              <button className={styles.container__form_button_button_cancel} onClick={comeback}>Cancel</button>
+              <button className={styles.container__form_button_button_cancel} onClick={comeback}>Back to Home</button>
             </div>
           </div>
         </div>

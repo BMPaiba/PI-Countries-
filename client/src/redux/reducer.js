@@ -1,17 +1,12 @@
 import {
-  CONTINENT,
   ACTIVITIES,
   ORDER,
-  POPULATION,
   ALLCOUNTRIES,
   PAGED,
   SEARCH,
-  NEWACTIVITIES,
-  FILTERACTIVITIES,
   CLEARFILTERS,
   FILTERS,
 } from "./action-types";
-import { filters } from "./actions";
 
 const initialState = {
   countries: [],
@@ -22,13 +17,11 @@ const initialState = {
 };
 
 const applyFilters = (continent, activity, countries, activities) => {
-  // Si ambos filtros son "All", devuelve la lista completa
   if (continent === "All" && activity === "All") {
     console.log("estas son las actividades: ", activities);
     return countries;
   }
-
-  // Filtrar por continente
+  
   if (continent !== "All" && activity === "All") {
     const filteredContinentsOnly = countries.filter(
       (country) => country.continent === continent
@@ -44,12 +37,11 @@ const applyFilters = (continent, activity, countries, activities) => {
 
     const countriesOfActivityId = filterActivity.countries;
 
-    //filtro para todos los continentes
+    
     const filterActivityOnAllContinents = countries.filter((country) =>
       countriesOfActivityId.includes(country.id)
     );
 
-    //filtra por actividad y continente
     const filteredContinents = filterActivityOnAllContinents.filter(
       (country) => country.continent === continent
     );
@@ -61,7 +53,6 @@ const applyFilters = (continent, activity, countries, activities) => {
       return filteredContinents;
     }
 
-    console.log(filteredContinents);
   }
 
   return countries;
@@ -89,21 +80,6 @@ export default function reducer(state = initialState, { type, payload }) {
         countries: filterFinallyComb,
       };
 
-    case CONTINENT:
-      if (payload === "All") {
-        return {
-          ...state,
-          countries: [...state.originalCountries],
-        };
-      }
-      const contStateFiltered = state.originalCountries.filter(
-        (country) => country.continent === payload
-      );
-      return {
-        ...state,
-        countries: contStateFiltered,
-      };
-
     case PAGED:
       return {
         ...state,
@@ -112,24 +88,17 @@ export default function reducer(state = initialState, { type, payload }) {
 
     case ORDER:
       const copyState = [...state.countries];
-      if (payload === "A")
+      if (payload === "ascendant")
         copyState.sort((a, b) => a.name.localeCompare(b.name));
-      if (payload === "D")
+      if (payload === "descending")
         copyState.sort((a, b) => b.name.localeCompare(a.name));
+      if (payload === "maximum")
+        copyState.sort((a, b) => a.population - b.population);
+      if (payload === "minimum")
+        copyState.sort((a, b) => b.population - a.population);
       return {
         ...state,
         countries: copyState,
-      };
-
-    case POPULATION:
-      const populState = [...state.countries];
-      if (payload === "A")
-        populState.sort((a, b) => a.population - b.population);
-      if (payload === "D")
-        populState.sort((a, b) => b.population - a.population);
-      return {
-        ...state,
-        countries: populState,
       };
 
     case CLEARFILTERS:
@@ -142,39 +111,6 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         activities: payload,
-      };
-
-    case FILTERACTIVITIES:
-      if (payload === "All") {
-        let filterCountryId = state.activities
-          .map((elem) => elem.countries)
-          .flat();
-
-        let filterCountryIdSet = [...new Set(filterCountryId)];
-
-        const filterFinally = state.originalCountries.filter((country) =>
-          filterCountryIdSet.includes(country.id)
-        );
-
-        return {
-          ...state,
-          countries: filterFinally,
-        };
-      }
-
-      const filterActivities = state.activities.find(
-        (act) => act.id === parseInt(payload)
-      );
-
-      const filterCountries = filterActivities.countries;
-
-      const filterFinally = state.originalCountries.filter((country) =>
-        filterCountries.includes(country.id)
-      );
-
-      return {
-        ...state,
-        countries: filterFinally,
       };
 
     case SEARCH:

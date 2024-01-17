@@ -2,11 +2,8 @@ import React, { useEffect, useState } from "react";
 import styles from "./Filters.module.css";
 import {
   paged,
-  continent,
   order,
-  population,
   clear,
-  filterActivities,
   allActivities,
   filters,
 } from "../../../../redux/actions";
@@ -24,7 +21,6 @@ export default function Filters() {
     const { value } = event.target;
     setContinentFilter(value);
   };
-  
 
   const handleActivity = (event) => {
     const { value } = event.target;
@@ -43,18 +39,13 @@ export default function Filters() {
     dispatch(order(event.target.value));
     dispatch(paged(1));
   };
-  const handlePopulation = (event) => {
-    dispatch(population(event.target.value));
-    dispatch(paged(1));
-  };
+ 
   const clearFilters = () => {
     dispatch(clear());
     dispatch(paged(1));
     setActivityFilter("All")
     setContinentFilter("All");
   };
-  
-  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -110,26 +101,16 @@ export default function Filters() {
 
         <div className={styles.container__alphabeticalOrder}>
           <div className={styles.container__continent_name}>
-          <h4>Alphabetical order</h4>
-
+          <h4>Sort By</h4>
           </div>
           <select name="order" onChange={handlerOrder}>
-            <option value="A">a-z</option>
-            <option value="D">z-a</option>
+            <option value="select">Select</option>
+            <option value="ascendant">Name (A - Z)</option>
+            <option value="descending">Name (Z - A)</option>
+            <option value="maximum">Poblation (Min - Max)</option>
+            <option value="minimum">Poblation (Max - Min)</option>
           </select>
         </div>
-
-        <div className={styles.container__populationOrder}>
-          
-          <div className={styles.container__continent_name}>
-          <h4>Population order</h4>
-          </div>
-          <select name="population" onChange={handlePopulation}>
-            <option value="A">min-max</option>
-            <option value="D">max-min</option>
-          </select>
-        </div>
-
         <div className={styles.container__cleanButton}>
           <button type="submit" onClick={clearFilters}>
             Clear Filters

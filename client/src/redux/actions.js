@@ -1,13 +1,10 @@
 import {
     ALLCOUNTRIES,
-    CONTINENT,
     ACTIVITIES,
     ORDER,
-    POPULATION,
     PAGED,
     SEARCH,
     NEWACTIVITIES,
-    FILTERACTIVITIES,
     CLEARFILTERS,
     FILTERS,
   } from "./action-types";
@@ -33,20 +30,6 @@ import {
     };
   };
   
-  export const population = (population) => {
-    return {
-      type: POPULATION,
-      payload: population,
-    };
-  };
-  
-  export const continent = (continent) => {
-    return {
-      type: CONTINENT,
-      payload: continent,
-    };
-  };
-  
   export const paged = (page) => {
     return {
       type: PAGED,
@@ -68,22 +51,13 @@ import {
     };
   };
   
-  export const filterActivities = (activity) => {
-    return {
-      type: FILTERACTIVITIES,
-      payload: activity,
-    };
-  };
-  
   export const clear = (clear) => {
     return {
       type: CLEARFILTERS,
       payload: clear,
     };
   };
-  
 
-  //? combined filters
   export const filters = (continent, activity) => ({
     type: FILTERS,
     payload: {
