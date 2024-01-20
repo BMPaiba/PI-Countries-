@@ -21,7 +21,6 @@ const applyFilters = (continent, activity, countries, activities) => {
     console.log("estas son las actividades: ", activities);
     return countries;
   }
-  
   if (continent !== "All" && activity === "All") {
     const filteredContinentsOnly = countries.filter(
       (country) => country.continent === continent
@@ -30,31 +29,23 @@ const applyFilters = (continent, activity, countries, activities) => {
       return filteredContinentsOnly;
     } else return console.log("No existe la data");
   }
-
   if (activity !== "All") {
     const activityNumer = Number(activity);
     let filterActivity = activities.find((act) => act.id === activityNumer);
-
     const countriesOfActivityId = filterActivity.countries;
-
-    
     const filterActivityOnAllContinents = countries.filter((country) =>
       countriesOfActivityId.includes(country.id)
     );
-
     const filteredContinents = filterActivityOnAllContinents.filter(
       (country) => country.continent === continent
     );
     if (continent === "All") {
       return filterActivityOnAllContinents;
     }
-
     if (continent !== "All") {
       return filteredContinents;
     }
-
   }
-
   return countries;
 };
 

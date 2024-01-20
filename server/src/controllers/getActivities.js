@@ -23,7 +23,6 @@ const getActivities = async () => {
 
     return act;
   });
-  
   return activityWithCountries;
 };
 module.exports = getActivities;

@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./Landing.module.css";
-import { Link, useNavigate } from "react-router-dom";
-import image from "../../../assets/globe-36.gif";
+import { useNavigate } from "react-router-dom";
 
 export default function Landing() {
   const navigate = useNavigate();
@@ -27,6 +26,3 @@ export default function Landing() {
   );
 }
 
-// ¡Bienvenido a nuestra plataforma de descubrimiento de países!
-
-// ¿Listo para comenzar tu aventura? Navega a través de nuestro sitio y sumérgete en la diversidad de nuestro extraordinario planeta.
