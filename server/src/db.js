@@ -5,10 +5,10 @@ const ActivityModel = require("../src/models/Activity");
 
 const fs = require("fs");
 const path = require("path");
-const { DB_COUNTRIES, DB_USER, DB_PASSWORD, DB_HOST, DB_RENDER_URL } =
+const { DB_COUNTRIES, DB_USER, DB_PASSWORD, DB_HOST, DB_RENDER_URL }=
   process.env;
 
-const sequelize = new Sequelize(DB_RENDER_URL, {
+const sequelize = new Sequelize('postgres://countries_qzjg_user:NE6Dzd9pX2TY2umm2H50uQVUpnOspjR8@dpg-cmm1spi1hbls73cdb6d0-a.oregon-postgres.render.com/countries_qzjg', {
   logging: false,
   native: false,
   dialectOptions: {
