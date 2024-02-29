@@ -6,8 +6,8 @@ import './App.css'
 import { addCountries } from "./redux/actions.js";
 import Landing from './components/visibleComponents/landing/Landing';
 import Home from './components/visibleComponents/home/Home';
-import DetailCountry from './components/visibleComponents/detail/detailCountry';
-import FormCreateActivity from './components/visibleComponents/form/formCreateActivity';
+import DetailCountry from './components/visibleComponents/detail/DetailCountry';
+import FormCreateActivity from './components/visibleComponents/form/FormCreateActivity';
 
 function App() {
   const URL = "http://localhost:3001/countries";
