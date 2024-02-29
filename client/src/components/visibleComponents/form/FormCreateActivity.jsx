@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../../internalComponents/homeComponents/loading/Loading";
 
 export default function FormCreateActivity({ countries }) {
+  const URL_API = import.meta.env.VITE_URL_API;
   const dispatch = useDispatch();
   const { originalCountries } = useSelector((state) => state);
   const navigate = useNavigate();
@@ -97,7 +98,7 @@ export default function FormCreateActivity({ countries }) {
   const saveActivity = async (newActivity) => {
     try {
       const { data } = await axios.post(
-        "http://localhost:3001/activities/",
+        `${URL_API}/activities/`,
         newActivity
       );
       alert("Saved activity");

@@ -10,7 +10,8 @@ import DetailCountry from './components/visibleComponents/detail/DetailCountry';
 import FormCreateActivity from './components/visibleComponents/form/FormCreateActivity';
 
 function App() {
-  const URL = "http://localhost:3001/countries";
+  const URL_API = import.meta.env.VITE_URL_API;
+  const URL = `${URL_API}/countries`;
   const dispatch = useDispatch();
   const {countries} = useSelector((state) => state);
 

@@ -5,7 +5,8 @@ import styles from "./DetailCountry.module.css";
 import ActivityCard from "../../internalComponents/detailComponents/activityCard/ActivityCard";
 import { useSelector } from "react-redux";
 import Loading from "../../internalComponents/homeComponents/loading/Loading";
-const URL = "http://localhost:3001/countries/";
+const URL_API = import.meta.env.VITE_URL_API;
+const URL = `${URL_API}/countries/`;
 
 export default function DetailCountry() {
   const { id } = useParams();

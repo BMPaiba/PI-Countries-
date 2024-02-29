@@ -15,7 +15,9 @@ export default function Filters() {
   const [dropdownOptions, setDropdownOptions] = useState([]);
   const [continentFilter, setContinentFilter] = useState("All")
   const [activityFilter, setActivityFilter] = useState("All")
-  const URL_ACT = "http://localhost:3001/activities";
+  const URL_API = import.meta.env.VITE_URL_API;
+  const URL_ACT = `${URL_API}/activities`;
+  // const URL_ACT = "http://localhost:3001/activities";
 
   const handlerContinent = (event) => {
     const { value } = event.target;

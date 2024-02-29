@@ -7,7 +7,9 @@ import { search } from "../../../../redux/actions";
 
 export default function NavBar() {
   const [searched, setSearched] = useState("");
-  const URL_SEA = "http://localhost:3001/countries/name?name=";
+  const URL_API = import.meta.env.VITE_URL_API;
+  const URL_SEA = `${URL_API}/countries/name?name=`;
+  // const URL_SEA = "http://localhost:3001/countries/name?name=";
   const dispatch = useDispatch();
 
   const countrySearched = (event) => {
