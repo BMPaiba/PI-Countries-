@@ -15,7 +15,7 @@ export default function Home({ countries }) {
     const fetchData = () => {
       setTimeout(() => {
         setLoad(false);
-      }, 2000); 
+      }, 500); 
     };
     fetchData();
   }, []); 
@@ -25,9 +25,10 @@ export default function Home({ countries }) {
       <div className={styles.container}>
    
         <div className={styles.container__navbar}>
-          <NavBar></NavBar>
+          <NavBar/>
         </div>
-        <div className={styles.container_body}>
+
+         <div className={styles.container_body}>
           <div>
             <Filters className={styles.container_body_filter}>
               {" "}
@@ -40,9 +41,9 @@ export default function Home({ countries }) {
               countries={countries}
             />
           </div>
-        </div>
-        <div className={styles.container__paging}>
+         {/* <div className={styles.container__paging}>
           <PagingButtons countries={countries} />
+        </div>  */}
         </div>
       </div>
   );

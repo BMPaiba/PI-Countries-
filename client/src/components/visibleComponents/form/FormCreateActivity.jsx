@@ -20,7 +20,7 @@ export default function FormCreateActivity({ countries }) {
     const fetchData = () => {
       setTimeout(() => {
         setLoad(false);
-      }, 2000); 
+      }, 500); 
     };
     fetchData();
   }, []); 

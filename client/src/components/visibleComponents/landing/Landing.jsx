@@ -13,8 +13,7 @@ export default function Landing() {
     <div className={styles.container}>
       <div className={styles.container__form}>
         <div className={styles.container__form_text}>
-          <h1>Henry PI: Countries</h1>
-          <h2>by Brian Paiba</h2>
+          <h2>Explora cada rincón del mundo desde la comodidad de tu hogar</h2>
         </div>
         <div className={styles.container__form_button}>
           <button onClick={login} type="submit">

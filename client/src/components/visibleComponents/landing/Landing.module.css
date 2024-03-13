@@ -4,10 +4,15 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    min-width: 280px;
+
 }
-.container__form{  backdrop-filter: blur(30px);
+.container__form{ 
+     backdrop-filter: blur(100px);
     padding: 20px;
     border-radius: 30px;
+    width: 450px;
+    min-width: 280px;
 }
 .container__form_image{
     width: 300px;
@@ -15,6 +20,7 @@
 }
 .container__form_text{
     text-align: center;
+    margin-bottom: 30px;
 }
 .container__form_button{
     text-align: center;

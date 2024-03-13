@@ -1,84 +1,83 @@
- body {
-    margin: 0;
-    user-select: none;
-    box-sizing: border-box;
-  }
-  
 
-
- .container{
-  /* background-color: red; */
-  height: 100vh;
+.container {
+  /* height: 100vh; */
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
- }
-
- .container__form{
-  /* background-color: #29f; */
-  backdrop-filter: blur(150px);
-
-  padding: 15px;
+  min-width: 280px;
+  flex-direction: column;
 }
 
-/* .container__form_hijo{
-  overflow: hidden;
- } */
+.container__form {
+  backdrop-filter: blur(150px);
+  padding: 15px;
+  min-width: 280px;
+}
 
- .container__form_label{
-  /* background-color: #00f3; */
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+.container__form_label {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 20px;
   color: #fff;
- }
+  /* background-color: red; */
+  margin: 5px 0;
+  min-width: 250px;
 
- .container__form_input{
-  margin-top:5px;
+}
+
+.container__form_input {
+  /* margin-top: 5px; */
   width: 100%;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   padding: 2px;
   font-size: 18px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   background-color: transparent;
   border: none;
   outline: none;
   border-bottom: 1px solid #24e7fd;
   color: #24e7fd;
+  margin-bottom: 20px;
+  min-width: 250px;
+
 }
 
- .container__form_errors{
+.container__form_errors {
   margin-top: -10px;
   color: #aaa;
- }
+}
 
- .container__form_input_option{
+.container__form_input_option {
   background-color: #0a4791;
   color: #24e7fd;
- }
+}
 
-
-.container__form_button{
+.container__form_button {
   display: flex;
   justify-content: space-between;
+  margin-top: 15px;
+  min-width: 250px;
+
 }
 
-.container__form_button_button_cancel ,
-.container__form_button_button_create
-{
+.container__form_button_button_cancel,
+.container__form_button_button_create {
   height: 30px;
-  width: 70px;
+  width: 120px;
   border-radius: 30px;
   font-size: 16px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
-.container__form_button_button_cancel:hover{
+.container__form_button_button_cancel:hover {
   cursor: pointer;
   background-color: #25edff;
- }
+}
 
- .container__form_button_button_create:hover:enabled {
+.container__form_button_button_create:hover:enabled {
   background-color: #25edff;
   color: black;
   cursor: pointer;
-}
+} 
+

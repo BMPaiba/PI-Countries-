@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { search } from "../../../../redux/actions";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 export default function NavBar() {
   const [searched, setSearched] = useState("");
@@ -33,18 +34,33 @@ export default function NavBar() {
     fetchData();
   }, [searched]);
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <div className={styles.container}>
-      <input
-        type="search"
-        value={searched}
-        placeholder="Type the name of the country"
-        onChange={countrySearched}
-      />
-  
-      <Link to="/Form">
-        <button type="submit">Create a New Activity</button>
-      </Link>
-    </div>
+    <>
+      <div className={styles.container}>
+        <input
+          type="search"
+          value={searched}
+          placeholder="Type the name of the country"
+          onChange={countrySearched}
+        />
+        <Link to="/Form">
+          <button type="submit" id={styles.create}>
+            Create a New Activity
+          </button>
+        </Link>
+        <GiHamburgerMenu id={styles.menu} onClick={toggleMenu} />
+      </div>
+      <div className={menuOpen ? styles.contentOpen : styles.content}>
+        <Link to="/Form">
+          <h2>Create a New Activity</h2>
+        </Link>
+      </div>
+    </>
   );
 }

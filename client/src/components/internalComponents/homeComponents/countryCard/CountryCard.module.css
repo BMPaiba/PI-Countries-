@@ -29,6 +29,10 @@ body {
   border-radius: 15px;
   width: 90%;
   height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 9px;
 }
 
 .container__info_name h2 {

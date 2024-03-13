@@ -15,7 +15,7 @@ const sequelize = new Sequelize(DB_RENDER_URL, {
   dialectOptions: {
     ssl: {
       require: true,
-      rejectUnauthorized: false, // Puedes ajustar esto según la configuración del servidor PostgreSQL
+      rejectUnauthorized: false, 
     },
   },
 });

@@ -9,12 +9,13 @@ import {
 } from "../../../../redux/actions";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import { FaFilter } from "react-icons/fa6";
 
 export default function Filters() {
   const dispatch = useDispatch();
   const [dropdownOptions, setDropdownOptions] = useState([]);
-  const [continentFilter, setContinentFilter] = useState("All")
-  const [activityFilter, setActivityFilter] = useState("All")
+  const [continentFilter, setContinentFilter] = useState("All");
+  const [activityFilter, setActivityFilter] = useState("All");
   const URL_API = import.meta.env.VITE_URL_API;
   const URL_ACT = `${URL_API}/activities`;
   // const URL_ACT = "http://localhost:3001/activities";
@@ -26,26 +27,26 @@ export default function Filters() {
 
   const handleActivity = (event) => {
     const { value } = event.target;
-    setActivityFilter(value)
+    setActivityFilter(value);
   };
 
-  useEffect(()=> {
+  useEffect(() => {
     const fetchData = () => {
-      dispatch(filters(continentFilter,activityFilter))
+      dispatch(filters(continentFilter, activityFilter));
       dispatch(paged(1));
-    }
-    fetchData()
-  }, [continentFilter,activityFilter])
+    };
+    fetchData();
+  }, [continentFilter, activityFilter]);
 
   const handlerOrder = (event) => {
     dispatch(order(event.target.value));
     dispatch(paged(1));
   };
- 
+
   const clearFilters = () => {
     dispatch(clear());
     dispatch(paged(1));
-    setActivityFilter("All")
+    setActivityFilter("All");
     setContinentFilter("All");
   };
 
@@ -68,12 +69,33 @@ export default function Filters() {
     fetchData();
   }, [URL_ACT]);
 
+  const [showMenu, setShowMenu] = useState(window.innerWidth > 768);
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setShowMenu(window.innerWidth > 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <>
+      <div className={styles.container__filter}>
+        <FaFilter className={styles.btn_filter}  onClick={toggleMenu} />
+      </div>
+      {showMenu && (
       <div className={styles.container}>
         <div className={styles.container__continent}>
           <div className={styles.container__continent_name}>
-          <h4>Select by continent</h4>
+            <h4>Select by continent</h4>
           </div>
           <select name="continent" onChange={handlerContinent}>
             <option value="All">All Continents</option>
@@ -88,8 +110,7 @@ export default function Filters() {
 
         <div className={styles.container__activities}>
           <div className={styles.container__continent_name}>
-          <h4>Select by activity</h4>
-
+            <h4>Select by activity</h4>
           </div>
           <select onChange={handleActivity}>
             <option value="All">All Activities</option>
@@ -103,7 +124,7 @@ export default function Filters() {
 
         <div className={styles.container__alphabeticalOrder}>
           <div className={styles.container__continent_name}>
-          <h4>Sort By</h4>
+            <h4>Sort By</h4>
           </div>
           <select name="order" onChange={handlerOrder}>
             <option value="select">Select</option>
@@ -118,7 +139,7 @@ export default function Filters() {
             Clear Filters
           </button>
         </div>
-      </div>
+      </div>)}
     </>
   );
 }

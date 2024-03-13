@@ -18,7 +18,7 @@ export default function DetailCountry() {
     const fetchData = () => {
       setTimeout(() => {
         setLoad(false);
-      }, 2000); 
+      }, 500); 
     };
     fetchData();
   }, []); 
